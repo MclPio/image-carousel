@@ -1,5 +1,9 @@
 img {
-  height: 500px;
+  width: 100vw;
+}
+
+figure {
+  margin: 0;
 }
 
 .slide {
@@ -13,13 +17,61 @@ img {
 }
 
 
-#content, h1{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+#content {
+  position: relative;
 }
 
-.buttons {
+#slides {
+}
+
+#left-button {
+  position: absolute;
+  top: 50%;
+  left: 1%;
+}
+
+#right-button {
+  position: absolute;
+  top: 50%;
+  right: 0;
+}
+
+#left-button, #right-button {
+  background-color: white;
+  border: 1px solid black;
+}
+
+#left-button:hover, #right-button:hover {
+  background-color: #e2e8f0;
+}
+
+#left-button:active, #right-button:active {
+  color: white;
+  background-color: #020617;
+}
+
+.nav-dot-group {
   display: flex;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: 0.33rem;
+}
+
+.nav-dot {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  background-color: white;
+  border: 1px solid #020617;
+}
+
+.nav-dot:hover {
+  background-color: #e2e8f0;
+}
+
+.nav-dot:active {
+  background-color: #020617;
+}
+
+.filled {
+  background-color: #1e293b;
 }
