@@ -22,9 +22,6 @@ function carousel() {
   }()
   
   const changeImage = function() {
-    // listen for click on either left or right button
-    // if left is clicked go to previous image if it exists else go to last image
-    //if right is pressed go to next image, if it does not exist, go to first image
     const slides = document.getElementById('slides')
     const rightButton = document.getElementById('right-button')
     const leftButton = document.getElementById('left-button')
@@ -113,19 +110,24 @@ function carousel() {
     }
   }
 
-  const advanceSlide = async function(time = 5000) {
-    const slides = document.getElementsByClassName('slide')
+  function slideTimer(time = 5000) {
+    const content = document.getElementById('content')
     const rightButton = document.getElementById('right-button')
-    // while there are no other clicks start timer to switch
-    while (true) {
-      await sleep(time)
+    let timeoutID;
+    
+    timeoutID = setTimeout(() => {
       rightButton.click()
-    }
-  }()
+    }, time)
 
-  function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    content.addEventListener('click', () => {
+      clearTimeout(timeoutID)
+      timeoutID = setTimeout(() => {
+        rightButton.click()
+      }, time)
+    })
   }
+  
+  return { slideTimer }
 }
 
 export { carousel }
